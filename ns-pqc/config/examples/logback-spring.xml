@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration>
+<configuration scan="true">
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<target>System.out</target>
+		<encoder>
+			<pattern>%d{HH:mm:ss.SSS} %-5level [%thread] %logger{36} - %msg%n</pattern>
+		</encoder>
+		<filter class="com.cdv.common.misc.logger.LevelRangeFilter">
+			<levelMax>INFO</levelMax>
+		</filter>
+	</appender>
+
+	<appender name="STDERR" class="ch.qos.logback.core.ConsoleAppender">
+		<target>System.err</target>
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<pattern>%d{HH:mm:ss.SSS} %-5level [%thread] %logger{36} - %msg%n</pattern>
+		</layout>
+		<filter class="com.cdv.common.misc.logger.LevelRangeFilter">
+			<levelMin>WARN</levelMin>
+		</filter>
+	</appender>
+
+	<appender name="RollingFile"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>TRACE</level>
+		</filter>
+
+		<file>logs/ns-servers.log</file>
+		<append>true</append>
+
+		<!-- 可让每天产生一个日志文件，最多 100 个，自动回滚 -->
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>logs/ns-servers-%d{yyyy-MM-dd}.log</fileNamePattern>
+			<maxHistory>100</maxHistory>
+		</rollingPolicy>
+
+		<!-- 下面这段注释的代码可以在日志文件超过 50MB 时进行归档，并且归档文件后缀只要是 .zip 或 .gz 就会自动压缩日志归档 -->
+		<rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+			<fileNamePattern>logs/ns-servers.%i.log.zip</fileNamePattern>
+			<minIndex>1</minIndex>
+			<maxIndex>7</maxIndex>
+		</rollingPolicy>
+		<triggeringPolicy
+			class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+			<maxFileSize>50MB</maxFileSize>
+		</triggeringPolicy>
+
+		<encoder>
+			<charset>UTF-8</charset>
+			<pattern><![CDATA[%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] %logger - %msg%n]]></pattern>
+		</encoder>
+	</appender>
+
+	<!-- 自有类的日志 -->
+	<logger name="com.cdv" level="DEBUG" />
+
+	<!-- RESTful 客户端请求响应日志 -->
+	<logger name="org.springframework.web.client" level="DEBUG" />
+	
+	<!-- 静态资源路径解析日志 -->
+	<!-- <logger name="org.springframework.web.servlet.resource" level="TRACE" /> -->
+
+	<!-- RESTful 服务端被请求的地址日志 -->
+	<logger name="org.springframework.web.servlet.DispatcherServlet" level="INFO"/>
+
+	<!-- RESTful 服务端被请求的地址/参数/请求内容/相应内容日志 -->
+	<logger name="org.springframework.web.filter.CommonsRequestLoggingFilter" level="INFO"/>
+
+	<!-- 服务器启动时无必要dubbo资源注册日志输出 -->
+	<logger name="com.alibaba.dubbo.registry.zookeeper.ZookeeperRegistry" level="WARN"/>
+	<logger name="com.alibaba.dubbo.config.AbstractConfig" level="WARN"/>
+
+	<!-- 服务器启动时无必要spring注册日志输出 -->
+	<logger name="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping" level="WARN"/>
+	<logger name="org.springframework.beans.factory.support.DefaultListableBeanFactory" level="WARN"/>
+	<logger name="org.springframework.context.support.PostProcessorRegistrationDelegate" level="WARN"/>
+
+	<root level="INFO">
+		<appender-ref ref="STDOUT" />
+		<appender-ref ref="STDERR" />
+
+		<appender-ref ref="RollingFile" />
+	</root>
+</configuration>

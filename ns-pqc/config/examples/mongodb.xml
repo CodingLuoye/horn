@@ -1,0 +1,20 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mongo="http://www.springframework.org/schema/data/mongo"
+	xsi:schemaLocation="http://www.springframework.org/schema/context
+          http://www.springframework.org/schema/context/spring-context.xsd
+          http://www.springframework.org/schema/data/mongo
+          http://www.springframework.org/schema/data/mongo/spring-mongo.xsd
+          http://www.springframework.org/schema/beans
+          http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<context:property-placeholder />
+
+	<mongo:mongo-client id="mongo-transcode" host="192.168.1.10" port="27017">
+		<mongo:client-options connections-per-host="${nsite.mongo.db.pool.size:30}" write-concern="JOURNAL_SAFE" />
+	</mongo:mongo-client>
+
+	<mongo:db-factory id="mongoDbFactory-transcode" mongo-ref="mongo-transcode"
+		dbname="nsitedb_v3" />
+	<mongo:template id="mongoTemplate-transcode" db-factory-ref="mongoDbFactory-transcode" />
+</beans>

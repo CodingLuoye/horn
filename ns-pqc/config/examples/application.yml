@@ -1,0 +1,11 @@
+server:
+  port: 48080
+  contextPath: /horn
+  
+logging:
+  config: ./config/logback-spring.xml
+
+spring:
+  http:
+    multipart:
+      enabled: false
