@@ -1,0 +1,155 @@
+﻿#searchInput {
+	position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 418px;
+    height: 45px;
+    font-family: 'Arial Normal', 'Arial';
+    font-weight: 400;
+    font-style: normal;
+    font-size: 13px;
+    text-decoration: none;
+    color: #000000;
+    text-align: left;
+}
+#pageSize {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 105px;
+    height: 22px;
+    font-family: 'Arial Normal', 'Arial';
+    font-weight: 400;
+    font-style: normal;
+    font-size: 13px;
+    text-decoration: none;
+    color: #000000;
+}
+#uploadBeginTime {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 83px;
+    height: 25px;
+    font-family: 'Arial Normal', 'Arial';
+    font-weight: 400;
+    font-style: normal;
+    font-size: 13px;
+    text-decoration: none;
+    color: #000000;
+    text-align: left;
+}
+#uploadEndTime {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 83px;
+    height: 25px;
+    font-family: 'Arial Normal', 'Arial';
+    font-weight: 400;
+    font-style: normal;
+    font-size: 13px;
+    text-decoration: none;
+    color: #000000;
+    text-align: left;
+}
+.close{
+	position: absolute;
+    left: 480px;
+    top: 0px;
+    width: 60px;
+    height: 60px;
+}
+.close .img {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 60px;
+    height: 60px;
+}
+.list-item{
+	position: relative;
+    left: 0px;
+    top: 0px;
+    width: 533px;
+    height: 66px;
+}
+.image{
+	position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 61px;
+    height: 56px;
+}
+.image .img{
+	position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 61px;
+    height: 56px;
+}
+.image .text{
+	position: absolute;
+    left: 2px;
+    top: 20px;
+    width: 57px;
+    visibility: hidden;
+    word-wrap: break-word;
+	display: none; 
+	visibility: hidden
+}
+.list-item .span1{
+	position: absolute;
+    left: 79px;
+    top: 6px;
+    width: 119px;
+    height: 19px;
+    font-size: 16px;
+}
+.list-item .span1 .bank {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 119px;
+    height: 19px;
+    background: inherit;
+    background-color: rgba(255, 255, 255, 0);
+    border: none;
+    border-radius: 0px;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    font-size: 16px;
+}
+.list-item .span2{
+	position: absolute;
+    left: 71px;
+    top: 28px;
+    width: 462px;
+    height: 19px;
+    font-size: 16px;
+    color: #999999;
+}
+.list-item .span2 .img {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 462px;
+    height: 19px;
+}
+.list-item .span3{
+	position: absolute;
+    left: 292px;
+    top: 6px;
+    width: 83px;
+    height: 19px;
+    font-size: 16px;
+}
+
+.list-item .span3 .img{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 83px;
+    height: 19px;
+}
